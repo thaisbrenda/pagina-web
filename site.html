@@ -1,30 +1,118 @@
-<html>
+<html lang="pt-br">
 <head>
+    <meta charset="UTF-8">
     <title>EmpreendApp</title>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
     <meta nome="viewport" content="width=device-width, initial-scalen=1.0, maximum-scale=1.0 ">
 </head>
 <body>
 <header>
     <div class="center">
-        <div class="logo"><img src="imagem/logo.empreendapp.jpeg"/></div>
-        <div class="manu">
-            <a href="#">home</a>
-            <a href="#">quem somos</a>
-            <a href="#">projetos</a>
-            <a href="#">orcamento</a>
-        </div>
+        <div class="logo"><img src="imgs/logo.png"/></div>
+        <nav class="mMenu">
+            <a href="#">HOME</a>
+            <a href="#">SERVIÇOS</a>
+            <a href="#">CLIENTES</a>
+            <a href="#">PROJETO</a>
+            <a href="#">CONTATO</a>
+        </nav>
     </div>
 </header>
-<section class="sobre">
-    <div class="extras">
-<!--        <img src="imagem/img.celular.jpeg"/>-->
-        <div class="social-media">
-<!--            <a href=""><img src="icon facebook"/></a>-->
-<!--            <a href=""><img src="icon intagram"/></a>-->
-<!--            <a href=""><img src="icon whatshapp"/></a>-->
+
+<section class="p-5">
+    <div class="center">
+        <div class="row align-items-start">
+            <div id="parteA" class="col-8">
+                <h1>TERCERIZE JÁ O SEU PROJETO!</h1>
+                <p>Conecte-se conosco para tira seu projeto do papel! Contamos com uma comunidade de desenvolvedores
+                    altamente qualificados cadastrados na nossa plataforma! Interaja e acompanhe o trabalho em
+                    tempo real com apenas um click. Torne seu projeto realidade.</p>
+
+                <div id="buttonsGroup" class="d-flex">
+                    <div id="spaceButtonLogin" class="pb-2">
+                        <button id="login" type="button" class="btn mButton">Entrar</button>
+                    </div>
+                    <div id="spaceButtonSignIn" class="pb-2">
+                        <button id="signIn" type="button" class="btn mButton">Cadastre-se</button>
+                    </div>
+                </div>
+
+                <form id="loginForm" class="mForm px-5 pt-5 pb-4 mt-2">
+                    <div class="row pb-4">
+                        <div class="col-6 mb-2">
+                            <label class="form-label text-white fw-bold">Login</label>
+                            <input class="form-control" type="text"/>
+                        </div>
+                        <div class="col-6 mb-2 pb-4">
+                            <label class="form-label text-white fw-bold">Senha</label>
+                            <input class="form-control" type="password"/>
+                        </div>
+                        <div class="col-8">
+                        </div>
+                        <div class="col-4 text-end" style="padding: 0 !important;">
+                            <input type="submit" value="Logar" class="btn mButton"/>
+                        </div>
+                    </div>
+                </form>
+
+                <form id="signInForm" class="mForm px-5 pt-5 pb-4 mt-2">
+                    <div class="row pb-4">
+                        <div class="col-6 mb-2">
+                            <label class="form-label text-white fw-bold">Login</label>
+                            <input class="form-control" type="text"/>
+                        </div>
+                        <div class="col-6 mb-2 pb-4">
+                            <label class="form-label text-white fw-bold">Senha</label>
+                            <input class="form-control" type="password"/>
+                        </div>
+                        <div class="col-8">
+                            <label class="form-label text-white fw-bold">Nome</label>
+                            <input class="form-control" type="text"/>
+                        </div>
+                        <div class="col-4 text-end" style="padding: 0 !important;">
+                            <input type="submit" value="Cadastrar" class="btn mButton"/>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+            <div id="parteB" class="col-4">
+                <img src="imgs/ilustration.png">
+                <a class="legenda-link" href='https://br.freepik.com/fotos-vetores-gratis/personagem'>
+                    Ilusttration by vectorjuice - br.freepik.com
+                </a>
+            </div>
         </div>
     </div>
 </section>
+
+<script>
+    var loginFormIsOpen = false;
+    var signInFormIsOpen = false;
+
+    $(document).on("click", "#login", function (e) {
+        if(signInFormIsOpen){
+            $("#signInForm").toggle(950);
+            signInFormIsOpen = !signInFormIsOpen
+        }
+        $("#loginForm").toggle(450)
+        loginFormIsOpen = !loginFormIsOpen
+    });
+
+    $(document).on("click", "#signIn", function (e) {
+        if(loginFormIsOpen){
+            $("#loginForm").toggle(950)
+            loginFormIsOpen = !loginFormIsOpen
+        }
+        $("#signInForm").toggle(450);
+        signInFormIsOpen = !signInFormIsOpen
+    });
+</script>
+
+<script src="bootstrap/js/bootstrap.js"/>
+
 </body>
 </html>

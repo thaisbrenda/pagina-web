@@ -1,64 +1,104 @@
-{
+* {
     margin: 0 ;
     padding: 0;
     box-sizing: border-box;
 }
-
+body{
+    background-color: #eef1ff;
+    color: #1a2c2d;
+}
 .center {
     display: flex;
     flex-wrap: wrap;
-    max-width: 1280px;
+    max-width: 90%;
     margin: 0 auto;
     padding: 0 2%;
 }
-
 header {
-    height: 200px;
     padding: 20px 0;
 }
-
 html, body {
     height: 100%;
     overflow-y: hidden;
     overflow-x: hidden;
 }
-
 .logo {
-    width: 50px;
-    height: 50px;
+    width: 50%;
 }
-
-.menu {
-    padding-top: 30px;
+.logo img {
+    width: 350px;
+}
+.mMenu {
     width: 50%;
     text-align: right;
+    padding-top: 40px;
 }
-
-.menu a {
-    color: black;
+.mMenu a {
+    padding: 10px 16px 10px 16px;
+    border-radius: 12px;
+    color: #1a2c2d;
     text-decoration: none;
-    font-wight: bold;
     margin-right: 15px;
-
+    height: 100%;
+    font-weight: bold;
+    font-family: Jamrul;
+    font-size: 14pt;
+    transition: all 300ms;
 }
-
-section.sobre {
-    height: calc(100 - 200px);
-    position: relative;
+.mMenu a:hover {
+    color: #ff529c;
+    background-color: white;
 }
-
-.extras {
-    position: relative;
-    bottom:-450px;
-    right: -500px;
-    width: 1200px;
-    height: 12000px;
-    border-radius: 50%;
-    background-color:#c8a2c8;
+.mForm {
+    display: none;
+    width: 100%;
+    background-color: #1c1c1c;
+    border-radius: 20px;
 }
-
-.social-media {
-    position: absolute;
-    left: 0;
-    top: 0;
+#parteA{
+    padding-top: 40px;
+    padding-right: 320px;
+}
+#parteA h1{
+    font-family: AnjaliOldLipi;
+    font-size: 32pt;
+    padding-top: 20px;
+}
+#parteA p{
+    font-family: AnjaliOldLipi;
+    font-size: 16pt;
+    padding-bottom: 16px;
+}
+#parteB{
+    text-align: center;
+}
+#parteB img{
+    padding-top: 20px;
+    width: 700px;
+}
+.mButton{
+    background-color: white;
+    padding: 16px 32px 16px 32px;
+    border-radius: 12px;
+    margin-right: 15px;
+    height: 100%;
+    font-weight: bold;
+    font-family: Jamrul;
+    font-size: 16pt;
+    color: #ff529c;
+    transition: color 1000ms, background-color 600ms;
+}
+.mButton:hover{
+    color: #ffffff;
+    background-color: #1c1c1c;
+}
+.legenda-link{
+    text-decoration: none;
+    color: #1c1c1c;
+    font-size: 14pt;
+    padding-left: 140px;
+    transition: all 600ms;
+}
+.legenda-link:hover{
+    color: #9f226d;
 }
