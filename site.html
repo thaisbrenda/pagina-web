@@ -52,7 +52,7 @@
                         <div class="col-8">
                         </div>
                         <div class="col-4 text-end" style="padding: 0 !important;">
-                            <input type="submit" value="Logar" class="btn mButton"/>
+                            <input id="bLogar" type="submit" value="Logar" class="btn mButton"/>
                         </div>
                     </div>
                 </form>
@@ -72,7 +72,7 @@
                             <input class="form-control" type="text"/>
                         </div>
                         <div class="col-4 text-end" style="padding: 0 !important;">
-                            <input type="submit" value="Cadastrar" class="btn mButton"/>
+                            <input id="bCadastrar" type="submit" value="Cadastrar" class="btn mButton"/>
                         </div>
                     </div>
                 </form>
@@ -110,6 +110,18 @@
         $("#signInForm").toggle(450);
         signInFormIsOpen = !signInFormIsOpen
     });
+
+    $(document).on("click", "#bLogar", function (e) {
+        window.location.href='home.html'
+        alert("okay!")
+    });
+
+    $(document).on("click", "#bCadastrar", function (e) {
+        //salvarNovoUsuario()
+        window.location.href='site.html'
+        alert("Cadastro concluido com sucesso!")
+    });
+
 </script>
 
 <script src="bootstrap/js/bootstrap.js"/>

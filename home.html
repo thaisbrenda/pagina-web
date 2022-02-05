@@ -1,0 +1,138 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>EmpreendApp</title>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <meta nome="viewport" content="width=device-width, initial-scalen=1.0, maximum-scale=1.0 ">
+</head>
+<body>
+<header>
+    <div class="center">
+        <div class="logo"><img src="imgs/logo.png"/></div>
+        <nav class="mMenu"><a href="#">HOME</a>
+            <a href="#">SERVIÇOS</a>
+            <a href="#">CLIENTES</a>
+            <a href="#">PROJETO</a>
+            <a href="#">CONTATO</a>
+        </nav>
+    </div>
+</header>
+
+<section class="p-5">
+    <div class="center">
+        <div class="row align-items-start">
+            <div id="parteA" class="col-8">
+
+                <form id="userInitForm" action="action.php" method="post" class="mForm px-5 pt-5 pb-4 mt-5" style="margin-left: 23.333vw">
+                    <div class="row pb-4">
+                        <div class="col-12 mb-2">
+                            <label class="form-label text-white fw-bold">Tipo do usário</label><br>
+                            <div class="form-check form-check-inline">
+                                <input id="checkEmpresa" class="form-check-input" onclick="toggleUserTypeInForm('Empresa')" type="radio" name="inlineRadioOptions" value="empresa">
+                                <label class="form-check-label text-white" for="checkEmpresa"> Empresa Contratante </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input id="checkProfissional" class="form-check-input" onclick="toggleUserTypeInForm('Profissional')" type="radio" name="inlineRadioOptions" value="profissional">
+                                <label class="form-check-label text-white" for="checkProfissional"> Profissional </label>
+                            </div>
+                            <br><br>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <label id="label_CPF_CNPJ" class="form-label text-white fw-bold">CPF</label>
+                            <input id="inputCPF" class="form-control" minlength="14" maxlength="14" type="text" onkeypress="$(this).mask('000.000.000-00');" required/>
+                            <input id="inputCNPJ" class="form-control" minlength="18" maxlength="18" style="display: none;" type="text" onkeypress="$(this).mask('00.000.000/0000-00')">
+                        </div>
+                        <div class="col-6 mb-2 pb-4">
+                            <label class="form-label text-white fw-bold">Telefone</label>
+                            <input id="inputTel" class="form-control" minlength="16" maxlength="16" type="text" onkeypress="$(this).mask('(00) 9 0000-0009')" required>
+                        </div>
+                        <div id="divSelectProfissao" class="col-8">
+                            <label class="form-label text-white fw-bold">Profissão</label>
+                            <select class="form-select" id="selectProfissao" aria-describedby="divSelectProfissao" required>
+                                <option selected disabled value="">Choose...</option>
+                                <option>Desenvolvedor de Software</option>
+                                <option>Analista de Banco de Dados</option>
+                                <option>Analista de Projetos</option>
+                                <option>Gestor de Midias Sociais</option>
+                                <option>Gerente de Marketing</option>
+                                <option>Web Designer</option>
+                                <option>Designer</option>
+                                <option>Outras</option>
+                            </select>
+                            <br><br>
+                        </div>
+                        <div class="row pb-4" style="padding: 0 !important; margin: 0 !important;">
+                            <div class="col-8"></div>
+                            <div class="col-4 text-end" style="padding: 0 !important; margin: 0 !important;">
+                                <input type="submit" form="userInitForm" id="bProsseguir" value="Proceguir" class="btn mButton"/>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+            <div id="parteB" class="col-4">
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    var isUserInitialized = false;
+    var userType = "Profissional";
+
+    window.onload = function openInitCadastroForm(){
+        if(!isUserInitialized){
+            $("#userInitForm").toggle(950);
+            document.getElementById("checkProfissional").checked = true
+        }
+    }
+
+    function toggleUserTypeInForm(userTypeSelected){
+        typeUser = userTypeSelected;
+
+        if(userTypeSelected == "Empresa"){
+            document.getElementById("label_CPF_CNPJ").innerText = "CNPJ";
+            $("#inputCPF").toggle(450);
+            $("#inputCNPJ").toggle(450);
+            $("selectProfissao").required = false;
+        } else if (userTypeSelected == "Profissional"){
+            document.getElementById("label_CPF_CNPJ").innerText = "CPF";
+            $("#inputCPF").toggle(450);
+            $("#inputCNPJ").toggle(450);
+            $("selectProfissao").required = true;
+        }
+        $("#divSelectProfissao").toggle(450);
+    }
+
+    $(document).on("click", "#bProsseguir", function (e) {
+        if(validateAll()){
+            isUserInitialized = true;
+            $("#userInitForm").style.display = "none";
+        }
+    });
+
+    function validateAll(){
+        var valid = true;
+
+        valid = $("#inputTel").valid;
+        if (typeUser == "Profissional"){
+            valid = $("#inputCPF").valid && $("#selectProfissao").valid;
+        } else if(userType == "Empresa"){
+            valid = $("#inputCNPJ").valid;
+        }
+
+        return valid;
+    }
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<script src="bootstrap/js/bootstrap.js"/>
+
+</body>
+</html>
